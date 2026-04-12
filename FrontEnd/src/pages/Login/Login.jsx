@@ -36,7 +36,7 @@ const Login = () => {
         navigate("/Dashboard");
       }else{
 
-        navigate("/home");
+        navigate("/");
       }
     } catch (err) {
       setError("Username or Password is incorrect");

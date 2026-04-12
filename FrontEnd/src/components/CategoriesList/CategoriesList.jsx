@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllProducts } from './../../api/services/productService';
+import { getAllCategory } from './../../api/services/categoryService';
 
 function CategoriesList() {
  
@@ -8,9 +8,8 @@ function CategoriesList() {
   useEffect(()=>{
     const fetchProduct =async ()=>{
       try {
-        const res =await getAllProducts()
+        const res =await getAllCategory()
         setProduct(res.data.data)
-        // console.log(res.data.data)
       } catch (error) {
         console.log("error fetching Product")
       }
@@ -20,7 +19,7 @@ function CategoriesList() {
 
   return (
    <div className="w-full bg-blue-300 p-2">
-      <div className="flex gap-2">
+      <div className="flex gap-2" >
         {products.map((product) => (
           <div
             key={product.name}
@@ -30,7 +29,6 @@ function CategoriesList() {
           </div>
         ))}
      
-      {/* <h1>product</h1> */}
       </div>
     </div>
   )
