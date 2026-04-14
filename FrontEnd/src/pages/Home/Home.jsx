@@ -1,24 +1,20 @@
-import NavBar from "../../components/NavBar/NavBar"
-import CategoriesList from "../../components/CategoriesList/CategoriesList"
-import PaymentSection from "../../components/PaymentSection/PaymentSection"
-import SelectedProducts from "../../components/SelectedProducts/SelectedProducts"
-import ProductsByCategory from "../../components/ProductsByCategory/ProductsByCategory"
+import NavBar from "../../components/NavBar/NavBar";
+import CategoriesList from "../../components/CategoriesList/CategoriesList";
+import PaymentSection from "../../components/PaymentSection/PaymentSection";
+import SelectedProducts from "../../components/SelectedProducts/SelectedProducts";
+import ProductsByCategory from "../../components/ProductsByCategory/ProductsByCategory";
+import { useState } from "react";
 
 function Home() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   return (
     <div className="h-screen flex flex-col">
-      
-      {/* Navbar */}
       <NavBar />
 
-      {/* Categories */}
-     
-          <CategoriesList />
-    
+      <CategoriesList setSelectedCategory={setSelectedCategory} />
 
-      {/* Main Layout */}
       <div className="flex flex-1 overflow-hidden">
-
         {/* Payment */}
         <div className="w-1/3 bg-gray-200 p-3 border-r">
           <PaymentSection />
@@ -31,12 +27,11 @@ function Home() {
 
         {/* Products */}
         <div className="w-1/3 bg-gray-400 p-3 overflow-y-auto">
-          <ProductsByCategory />
+          <ProductsByCategory selectedCategory={selectedCategory} />
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
