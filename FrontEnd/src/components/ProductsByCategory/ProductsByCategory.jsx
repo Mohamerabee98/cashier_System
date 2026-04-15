@@ -26,18 +26,19 @@ function ProductsByCategory({ selectedCategory }) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2">
-      {products.map((product) => (
-        <div
-          key={product._id}
-          onClick={() => addToCart(product)}
-          className="text-center bg-white p-3 rounded shadow cursor-pointer hover:bg-blue-500 hover:text-white transition"
-        >
-          {product.name}
-        </div>
-      ))}
-    </div>
-  );
+  <div className="grid grid-cols-2 gap-3">
+    {products.map((product) => (
+      <div
+        key={product._id}
+        onClick={() => addToCart(product)}
+        className="text-center bg-white p-3 rounded-lg border cursor-pointer 
+        hover:bg-blue-500 hover:text-white transition"
+      >
+        {product.name}
+      </div>
+    ))}
+  </div>
+);
 }
 
 export default ProductsByCategory;

@@ -17,22 +17,23 @@ function CategoriesList({setSelectedCategory}) {
     fetchProduct()
   }, [])
 
-  return (
-   <div className="w-full bg-blue-300 p-2">
-      <div className="flex gap-2" >
-        {products.map((product) => (
-          <div
-          onClick={()=>setSelectedCategory(product)}
-            key={product.name}
-            className="flex-1 bg-white text-center p-3 rounded-lg shadow cursor-pointer hover:bg-blue-500 hover:text-white transition"
-          >
-            {product.name}
-          </div>
-        ))}
-     
-      </div>
+ return (
+  <div className="w-full bg-slate-100 border-b p-2">
+    <div className="flex gap-2">
+      {products.map((product) => (
+        <div
+          onClick={() => setSelectedCategory(product)}
+          key={product.name}
+          className="flex-1 text-center p-3 rounded-md cursor-pointer 
+          bg-white text-slate-700 border 
+          hover:bg-blue-500 hover:text-white transition"
+        >
+          {product.name}
+        </div>
+      ))}
     </div>
-  )
+  </div>
+);
 }
 
 export default CategoriesList

@@ -24,6 +24,7 @@ export default function CartProvider({ children }) {
     });
   };
 
+
   
   const updateQty = (id, type) => {
     setCartItems((prev) =>
@@ -58,6 +59,9 @@ export default function CartProvider({ children }) {
     (sum, item) => sum + item.qty,
     0
   );
+  const clearCart = () => {
+  setCartItems([]);
+};
 
   return (
     <CartContext.Provider
@@ -68,6 +72,7 @@ export default function CartProvider({ children }) {
         removeItem,
         total,
         totalItems,
+        clearCart
       }}
     >
       {children}
