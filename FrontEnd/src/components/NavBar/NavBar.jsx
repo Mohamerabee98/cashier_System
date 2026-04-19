@@ -5,7 +5,7 @@ function NavBar() {
     localStorage.clear();
     navigate("/login");
   };
-  let username = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("user"));
  return (
    <nav className="bg-slate-800 text-white shadow">
   <div className="flex items-center justify-around py-3 text-lg">
@@ -14,7 +14,7 @@ function NavBar() {
     <h2 className="text-slate-300">
       Cashier Name:{" "}
       <span className="text-blue-400 font-bold">
-        {username}
+        {user.username}
       </span>
     </h2>
 

@@ -15,10 +15,10 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
+    setForm((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const handleLogin = async (e) => {
@@ -28,18 +28,27 @@ const Login = () => {
 
     try {
       const res = await loginUser(form);
-      localStorage.setItem("token", res.data.token);
-     localStorage.setItem("user", JSON.stringify(res.data.user.username));
-      
-      if (res.data.user.role === "admin" ) {
-        
-        navigate("/Dashboard");
-      }else{
 
+      const token = res?.data?.token;
+      const user = res?.data?.user;
+
+      if (!token || !user) {
+        throw new Error("Invalid response from server");
+      }
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // redirect based on role
+      if (user.role === "admin") {
+        navigate("/dashboard");
+      } else {
         navigate("/");
       }
     } catch (err) {
-      setError("Username or Password is incorrect");
+      setError(
+        err?.response?.data?.message || "Login failed. Check credentials."
+      );
     } finally {
       setLoading(false);
     }
@@ -57,6 +66,7 @@ const Login = () => {
             placeholder="Username"
             className="login-input"
             onChange={handleChange}
+            disabled={loading}
             required
           />
 
@@ -66,6 +76,7 @@ const Login = () => {
             placeholder="Password"
             className="login-input"
             onChange={handleChange}
+            disabled={loading}
             required
           />
 
