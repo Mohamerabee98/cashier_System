@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 export default function PaymentSection() {
   const { cartItems, total, totalItems , clearCart} = useCart();
   const [orderType, setOrderType] = useState("dine-in");
   const [paymentMethod, setPaymentMethod] = useState("cash");
-  const MySwal = withReactContent(Swal);
 
   const handleCheckout = () => {
     MySwal.fire({
