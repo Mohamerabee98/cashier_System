@@ -12,7 +12,7 @@ export default function PaymentSection() {
   const handleCheckout = () => {
     MySwal.fire({
       icon: "success",
-      title: "تم تأكيد الطلب ✅",
+      title: "تم تأكيد الطلب ",
       text: "تم تسجيل الطلب بنجاح",
       confirmButtonText: "تمام",
     }).then(() => {

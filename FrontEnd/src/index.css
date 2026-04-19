@@ -1,2 +1,6 @@
 @import "tailwindcss";
 
+.aside .active { 
+    background-color: blue;
+    padding: 2px;
+}
